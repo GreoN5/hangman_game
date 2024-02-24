@@ -73,3 +73,23 @@ hr {
 .char-input:disabled {
   background-color: #fff;
 }
+
+.wrong-chars-container {
+  display: flex;
+  width: 75%;
+  margin-bottom: 30px;
+}
+
+.wrong-chars-container > :first-child {
+  display: flex;
+  flex: 1;
+}
+
+.wrong-chars-container-text {
+  width: 35%;
+  display: flex;
+}
+
+.wrong-chars-heading {
+  margin-right: 5px;
+}

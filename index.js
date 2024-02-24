@@ -1,4 +1,5 @@
 const wordContainer = document.querySelector('.word-input-container');
+const wrongCharsContainer = document.querySelector('.wrong-chars-container-text');
 
 let currentWord = '';
 
@@ -16,8 +17,10 @@ document.addEventListener('keydown', (e) => {
   const figures = document.querySelectorAll('.figure-part');
 
   const inputChar = e.key;
-  if (!currentWord.includes(inputChar)) {
+  if (!currentWord.includes(inputChar) && !wrongCharsContainer.textContent.includes(inputChar)) {
     figures[0].classList.remove('figure-part');
+    displayWrongGuessedCharacter(inputChar);
+
     return;
   }
 
@@ -64,4 +67,19 @@ function putCharacterInEachFoundInput(inputChar) {
     const inputOfChar = wordContainer.children[i];
     inputOfChar.value = char;
   }
+}
+
+function displayWrongGuessedCharacter(inputChar) {
+  if (wrongCharsContainer.textContent.includes(inputChar)) {
+    return;
+  }
+
+  const wrongCharsText = document.createElement('p');
+  if (wrongCharsContainer.querySelectorAll('p').length > 0) {
+    wrongCharsText.textContent += `, ${inputChar}`;
+  } else {
+    wrongCharsText.textContent += inputChar;
+  }
+
+  wrongCharsContainer.appendChild(wrongCharsText);
 }
