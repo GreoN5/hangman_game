@@ -31,12 +31,23 @@ hr {
   border-color: #fff;
 }
 
+.figure-container {
+  fill: transparent;
+  stroke: #fff;
+  stroke-width: 4px;
+  stroke-linecap: round;
+}
+
+.figure-part {
+  display: none;
+}
+
 .heading-container {
   text-align: center;
   padding: 16px 0 16px 0;
 }
 
-.figure-container {
+.container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45,34 +56,20 @@ hr {
   position: relative;
 }
 
-.figure-stand {
-  position: absolute;
+.word-input-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.char-input {
   width: 50px;
+  height: 40px;
+  margin-inline: 5px;
+  font-size: 26px;
+  text-align: center;
 }
 
-.figure-stand-up {
-  position: absolute;
-  width: 125px;
-  transform: rotate(90deg) translateX(-60px);
-}
-
-.figure-stand-up-right {
-  position: absolute;
-  width: 50px;
-  transform: translate(25px, -120px);
-}
-
-.figure-stand-down {
-  position: absolute;
-  width: 20px;
-  transform: rotate(90deg) translate(-110px, -48px);
-}
-
-.figure-head {
-  position: absolute;
-  border: 5px solid #fff;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  transform: translate(47.5px, -85px);
+.char-input:disabled {
+  background-color: #fff;
 }
