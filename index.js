@@ -17,7 +17,7 @@ document.addEventListener('keydown', (e) => {
 
   const figures = document.querySelectorAll('.figure-part');
   if (!figures.length) {
-    modalWindow.showModal();
+    showModalWindow();
     return;
   }
 
@@ -28,7 +28,7 @@ document.addEventListener('keydown', (e) => {
     displayWrongGuessedCharacter(inputChar);
 
     if (figures.length === 1) {
-      modalWindow.showModal();
+      showModalWindow();
     }
 
     return;
@@ -112,6 +112,7 @@ async function restartGame() {
     figure.classList.add('figure-part');
   });
 
+  modalWindow.querySelector('.dialog-content').querySelector('p').remove();
   modalWindow.close();
 }
 
@@ -126,4 +127,12 @@ function clearWrongCharacters() {
   wrongCharsContainer.querySelectorAll('p').forEach((el) => {
     el.remove();
   });
+}
+
+function showModalWindow() {
+  const notGuessedWordContainer = document.createElement('p');
+  notGuessedWordContainer.textContent = `Unfortunately you have not guessed the word - ${currentWord}. You can try again by clicking the "Restart" button below.`;
+
+  modalWindow.querySelector('.dialog-content').appendChild(notGuessedWordContainer);
+  modalWindow.showModal();
 }

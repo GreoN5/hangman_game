@@ -140,3 +140,9 @@ dialog::backdrop {
   border: none;
   background-color: silver;
 }
+
+.dialog-content > p {
+  color: #121212;
+  text-align: justify;
+  font-size: 16px;
+}
