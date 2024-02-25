@@ -1,5 +1,6 @@
 const wordContainer = document.querySelector('.word-input-container');
 const wrongCharsContainer = document.querySelector('.wrong-chars-container-text');
+const modalWindow = document.querySelector('dialog');
 
 let currentWord = '';
 
@@ -15,11 +16,20 @@ document.addEventListener('keydown', (e) => {
   }
 
   const figures = document.querySelectorAll('.figure-part');
+  if (!figures.length) {
+    modalWindow.showModal();
+    return;
+  }
 
   const inputChar = e.key;
   if (!currentWord.includes(inputChar) && !wrongCharsContainer.textContent.includes(inputChar)) {
     figures[0].classList.remove('figure-part');
+    figures[0].classList.add('figure-part-visible');
     displayWrongGuessedCharacter(inputChar);
+
+    if (figures.length === 1) {
+      modalWindow.showModal();
+    }
 
     return;
   }
@@ -82,4 +92,38 @@ function displayWrongGuessedCharacter(inputChar) {
   }
 
   wrongCharsContainer.appendChild(wrongCharsText);
+}
+
+function closeModal() {
+  modalWindow.close();
+}
+
+async function restartGame() {
+  await retrieveRandomWord();
+
+  clearInputs();
+  clearWrongCharacters();
+
+  createInputElementForEachCharacter();
+
+  const figures = document.querySelectorAll('.figure-part-visible');
+  figures.forEach((figure) => {
+    figure.classList.remove('figure-part-visible');
+    figure.classList.add('figure-part');
+  });
+
+  modalWindow.close();
+}
+
+function clearInputs() {
+  const inputs = document.querySelectorAll('input');
+  inputs.forEach((input) => {
+    input.value = '';
+  });
+}
+
+function clearWrongCharacters() {
+  wrongCharsContainer.querySelectorAll('p').forEach((el) => {
+    el.textContent = '';
+  });
 }

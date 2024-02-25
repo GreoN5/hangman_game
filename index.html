@@ -16,9 +16,8 @@
     <div class="container">
         <div class="wrong-chars-container">
             <div></div>
-            <div class="wrong-chars-container-text">
-                <h3 class="wrong-chars-heading">Wrong characters: </h3>
-            </div>
+            <h3 class="wrong-chars-heading">Wrong characters:</h3>
+            <div class="wrong-chars-container-text"></div>
         </div>
         <div>
             <svg height="250" width="200" class="figure-container">
@@ -42,6 +41,15 @@
         </div>
         <div class="word-input-container"></div>
     </div>
+    <dialog id="modal-window">
+        <div class="dialog-body">
+            <h2>Game over!</h2>
+            <div class="dialog-actions">
+                <button type="button" onclick="restartGame()">Restart</button>
+                <button type="button" onclick="closeModal()">Close</button>
+            </div>
+        </div>
+    </dialog>
     <script type="text/javascript" src="./index.js"></script>
 </body>
 
