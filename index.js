@@ -118,12 +118,12 @@ async function restartGame() {
 function clearInputs() {
   const inputs = document.querySelectorAll('input');
   inputs.forEach((input) => {
-    input.value = '';
+    input.remove();
   });
 }
 
 function clearWrongCharacters() {
   wrongCharsContainer.querySelectorAll('p').forEach((el) => {
-    el.textContent = '';
+    el.remove();
   });
 }
