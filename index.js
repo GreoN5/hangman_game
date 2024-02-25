@@ -10,6 +10,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 document.addEventListener('keydown', (e) => {
+  if (modalWindow.open) {
+    return;
+  }
+
   // exclude non-character keys
   if (e.code !== `Key${e.key.toUpperCase()}`) {
     return;
@@ -36,6 +40,10 @@ document.addEventListener('keydown', (e) => {
 
   putCharacterInEachFoundInput(inputChar);
 });
+
+// modalWindow.addEventListener('keypress', (e) => {
+//   e.preventDefault();
+// });
 
 async function retrieveRandomWord() {
   return fetch('https://random-word-api.herokuapp.com/word')
